@@ -1,0 +1,148 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+
+#calc {
+    position:absolute;
+    width: 350px;
+    height: 400px;
+    left:100px;
+    top:50px;
+    border-radius:5px;
+    border-style: solid;
+    border-width:3px;
+    border-color: darkslategray;
+    background-color: lightslategrey;
+
+    -webkit-box-shadow: inset 0px -3px 38px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px -3px 38px 6px rgba(0,0,0,0.75);
+    box-shadow: inset 0px -3px 38px 6px rgba(0,0,0,0.75);
+}
+
+.key {
+    float:left;
+    width:50px;
+    height: 50px;
+    border-radius:5px;
+    background-color: lightgray;
+    border-style: solid;
+    border-width:2px;
+    border-color: darkslategrey; 
+    margin: 3px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    /*display: inline-block;*/
+    pointer-events:all;
+}
+.key:hover {
+	font-weight:bold;
+	//color:lightgreen;
+}
+
+#enter {
+    height:110px;
+    line-height: 100px;
+   background-color: #1886f4;
+    color: white;
+
+/*width:100px;*/
+}
+
+#reset, #clear {
+    background-color: red;
+    color: white;
+}
+
+#display {
+    position: absolute;
+    /*float:left;*/
+    left:10px;
+    top:10px;
+    right:10px;
+    background-color: #7de8bf;
+    padding: 3px;
+
+    height: 50px;/* 50 */
+    line-height: 50px;
+    font-size: 32px;
+    text-align: right;
+    border-style: solid;
+    border-width:1px;
+    border-color: lightseagreen; 
+}
+#kb {
+    position: absolute;
+    top:70px;
+    left:10px;
+    right:10px;
+    width:330px;
+    height:320px;   
+    /*background-color: seagreen;*/
+    pointer-events: none; 
+ 	/* cursor: none; */
+}
+#control_keyb {
+    float:right;
+    height: 60px;
+    width: fit-content;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding:3px; 
+
+    border-style: solid;
+    /*border-width:2px;*/
+    /*border-color: darkblue; */
+}
+
+#num_keyboard {
+    float:left;
+    /*50+2+2+3+3=60 60*3=180 +3+3*/
+/*24+150=174 +4*3=196*/
+    margin-left: 5px;
+    width:180px;
+    padding:3px; 
+    /*background-color: lightgreen;*/
+    /*border-color: slategrey; */
+
+}
+
+#op_keyboard {
+    float:left;
+    width:120px;
+    padding:3px; 
+    /*background-color: lightsalmon;*/
+    /*border-color: slategrey;*/ 
+    border-style: solid;
+    /*border-width:2px;*/
+}
+
+#hint {
+	position :absolute;
+	left:10px;
+    top:20px;
+    height:	10px;
+	/* background-color: lightgreen; */
+	font-size: 10px;
+	color:#555753;
+}

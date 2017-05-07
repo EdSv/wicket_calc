@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="org.apache.wicket.Component" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="90" x="903" y="314"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.apache.wicket.Page" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="89" x="814" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.apache.wicket.PageReference" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="113" x="409" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.apache.wicket.MarkupContainer" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="123" x="759" y="403"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.apache.wicket.markup.AbstractMarkupParser" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="156" x="903" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.apache.wicket.markup.MarkupParser" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="120" x="903" y="136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.apache.wicket.markup.MarkupStream" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="120" x="29" y="136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.apache.wicket.markup.MarkupType" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="120" x="239" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.apache.wicket.markup.html.WebPage" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="141" x="814" y="581"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.apache.wicket.markup.html.WebMarkupContainer" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="148" x="562" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.apache.wicket.markup.html.WebComponent" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="141" x="943" y="403"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.apache.wicket.markup.html.GenericWebPage" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="144" x="814" y="670"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.apache.wicket.markup.html.basic.Label" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="166" x="943" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.apache.wicket.markup.html.border.Body" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="170" x="426" y="314"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.apache.wicket.markup.html.border.Border" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="170" x="466" y="136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.apache.wicket.markup.html.border.BorderBehavior" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="170" x="29" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="org.apache.wicket.markup.html.border.BorderPanel" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="170" x="235" y="225"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="org.apache.wicket.markup.html.panel.Panel" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="166" x="235" y="136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.apache.wicket.markup.html.panel.Fragment" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="166" x="676" y="136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="org.apache.wicket.markup.html.panel.EmptyPanel" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="166" x="29" y="225"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="22">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="23">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="24" name="parent"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="27" name="HTML_MARKUP_TYPE"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="30">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="31" name="body"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="35">    
+    <bendpoint x="912" y="403"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="36" name="renderedComponents"/>      
+      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="38">    
+    <bendpoint x="435" y="225"/>    
+    <bendpoint x="435" y="136"/>    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="40">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="41" name="markupProvider"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <bendpoint x="726" y="225"/>    
+    <bendpoint x="726" y="314"/>    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="44" name="markupProvider"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="47" name="markupStream"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <generalization id="50">    
+    <bendpoint x="872" y="136"/>    
+    <bendpoint x="872" y="225"/>    
+    <bendpoint x="872" y="314"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="false">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

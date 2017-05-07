@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="org.apache.wicket.Application" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="89" x="572" y="581"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.apache.wicket.protocol.http.WebApplication" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="141" x="410" y="126"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.apache.wicket.protocol.http.servlet.ServletWebResponse" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="172" x="64" y="215"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.apache.wicket.protocol.http.servlet.ServletWebRequest" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="172" x="158" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest" 
+    project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="188" x="104" y="393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.apache.wicket.protocol.http.servlet.MultipartServletWebRequestImpl" 
+    project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="212" x="105" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.apache.wicket.protocol.http.servlet.FilterFactoryManager" 
+    project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="172" x="297" y="215"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.apache.wicket.protocol.http.servlet.WicketSessionFilter" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="172" x="572" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.apache.wicket.request.cycle.RequestCycle" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="145" x="378" y="858"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.apache.wicket.request.cycle.RequestCycleContext" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="150" x="594" y="947"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="org.apache.wicket.request.cycle.IRequestCycleListener" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="155" x="453" y="769"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="org.apache.wicket.request.cycle.RequestCycleListenerCollection" 
+    project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="209" x="378" y="680"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.apache.wicket.ThreadContext" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="109" x="572" y="393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.apache.wicket.protocol.http.WicketFilter" project="quickWicket" 
+    file="/home/edsv/.m2/repository/org/apache/wicket/wicket-core/8.0.0-M5/wicket-core-8.0.0-M5.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="49" width="141" x="370" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <realization id="15">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="16">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="17" name="requestCycleListeners"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <dependency id="20">    
+    <bendpoint x="322" y="393"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="21">    
+    <bendpoint x="266" y="215"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="22">    
+    <bendpoint x="581" y="492"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="23" name="application"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="25">    
+    <bendpoint x="721" y="126"/>    
+    <bendpoint x="721" y="215"/>    
+    <bendpoint x="721" y="304"/>    
+    <bendpoint x="721" y="393"/>    
+    <bendpoint x="680" y="492"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="27">    
+    <bendpoint x="499" y="215"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="28" name="wicketFilter"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="30">    
+    <bendpoint x="581" y="126"/>    
+    <bendpoint x="581" y="215"/>    
+    <bendpoint x="581" y="304"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="31">    
+    <bendpoint x="347" y="393"/>    
+    <bendpoint x="347" y="492"/>    
+    <bendpoint x="347" y="581"/>    
+    <bendpoint x="347" y="680"/>    
+    <bendpoint x="347" y="769"/>    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <association id="32">    
+    <bendpoint x="701" y="492"/>    
+    <bendpoint x="701" y="581"/>    
+    <bendpoint x="701" y="680"/>    
+    <bendpoint x="659" y="769"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="33" name="requestCycle"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="35">    
+    <bendpoint x="638" y="769"/>    
+    <bendpoint x="638" y="680"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="37">    
+    <bendpoint x="617" y="680"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="38">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="39" name="webRequest"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="41">    
+    <bendpoint x="541" y="215"/>    
+    <bendpoint x="541" y="304"/>    
+    <bendpoint x="541" y="393"/>    
+    <bendpoint x="541" y="492"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <dependency id="42">    
+    <bendpoint x="33" y="215"/>    
+    <bendpoint x="33" y="304"/>    
+    <bendpoint x="33" y="393"/>    
+    <bendpoint x="33" y="492"/>    
+    <bendpoint x="33" y="581"/>    
+    <bendpoint x="33" y="680"/>    
+    <bendpoint x="33" y="769"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <association id="43">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="44" name="threadLocal"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="47" name="applicationKeyToApplication"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="50">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="51">    
+    <bendpoint x="680" y="680"/>    
+    <bendpoint x="680" y="769"/>    
+    <bendpoint x="680" y="858"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="52">    
+    <bendpoint x="520" y="215"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="53" name="application"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="57">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="58">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="59" name="filterFactoryManager"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <association id="62">    
+    <bendpoint x="387" y="769"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="63" name="listeners"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="65">    
+    <bendpoint x="73" y="304"/>    
+    <bendpoint x="73" y="393"/>    
+    <bendpoint x="73" y="492"/>    
+    <bendpoint x="73" y="581"/>    
+    <bendpoint x="73" y="680"/>    
+    <bendpoint x="73" y="769"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

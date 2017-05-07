@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<wicket:head>
+<link rel="stylesheet" type="text/css" href="calc_style.css">
+<style>
+/* 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+
+#calc {
+    position:absolute;
+    width: 350px;
+    height: 400px;
+    left:100px;
+    top:50px;
+    border-radius:5px;
+    border-style: solid;
+    border-width:3px;
+    border-color: darkslategray;
+    background-color: lightslategrey;
+
+    -webkit-box-shadow: inset 0px -3px 38px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px -3px 38px 6px rgba(0,0,0,0.75);
+    box-shadow: inset 0px -3px 38px 6px rgba(0,0,0,0.75);
+}
+
+.key {
+    float:left;
+    width:50px;
+    height: 50px;
+    border-radius:5px;
+    background-color: lightgray;
+    border-style: solid;
+    border-width:2px;
+    border-color: darkslategrey; 
+    margin: 3px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    /*display: inline-block;*/
+}
+
+#enter {
+    height:110px;
+    line-height: 100px;
+   background-color: #1886f4;
+    color: white;
+
+/*width:100px;*/
+}
+
+#AC, #del {
+    background-color: red;
+    color: white;
+}
+
+#display {
+    position: absolute;
+    /*float:left;*/
+    left:10px;
+    top:10px;
+    right:10px;
+    background-color: #7de8bf;
+    padding: 3px;
+
+    height: 50px;
+    line-height: 50px;
+    font-size: 32px;
+    text-align: right;
+    border-style: solid;
+    border-width:1px;
+    border-color: lightseagreen; 
+}
+#kb {
+    position: absolute;
+    top:70px;
+    left:10px;
+    right:10px;
+    width:330px;
+    height:320px;   
+    /*background-color: seagreen;*/
+ 
+}
+#control_keyb {
+    float:right;
+    height: 60px;
+    width: fit-content;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding:3px; 
+
+    border-style: solid;
+    /*border-width:2px;*/
+    /*border-color: darkblue; */
+}
+
+#num_keyboard {
+    float:left;
+    /*50+2+2+3+3=60 60*3=180 +3+3*/
+/*24+150=174 +4*3=196*/
+    margin-left: 5px;
+    width:180px;
+    padding:3px; 
+    /*background-color: lightgreen;*/
+    /*border-color: slategrey; */
+
+}
+
+#op_keyboard {
+    float:left;
+    width:120px;
+    padding:3px; 
+    /*background-color: lightsalmon;*/
+    /*border-color: slategrey;*/ 
+    border-style: solid;
+    /*border-width:2px;*/
+} */
+
+
+
+</style>
+</wicket:head>
+</head>
+<body>
+<wicket:panel>
+<div id="calc">
+        <div id="display"><span wicket:id="result">123456789012</span>
+        <div><span id="hint" wicket:id="hint">hint...</span></div>
+        </div>
+        <div id="kb" wicket:id="ajax_root">
+        <div id="control_keyb">
+            <div id="reverse" class="key" tabIndex="19">1/x</div>
+            <div id="sqrt" class="key" tabIndex="20">sqrt</div>
+            <div id="power" class="key" tabIndex="21">x^y</div>
+            <div id="del" class="key" tabIndex="22">DEL</div>
+            <div id="AC" class="key" tabIndex="23">AC</div>
+            
+        </div>
+        <div id="num_keyboard">
+            <div id="7" class="key" tabIndex="1">7</div>
+            <div id="8" class="key" tabIndex="2">8</div>
+            <div id="9" class="key" tabIndex="3">9</div>
+            <div id="4" class="key" tabIndex="4">4</div>
+            <div id="5" class="key" tabIndex="4">5</div>
+            <div id="6" class="key" tabIndex="6">6</div>
+            <div id="1" class="key" tabIndex="7">1</div>
+            <div id="2" class="key" tabIndex="8">2</div>
+            <div id="3" class="key" tabIndex="9">3</div>
+            <div id="0" class="key" tabIndex="10">0</div>
+            <div id="." class="key" tabIndex="11">.</div>
+            <div id="sign" class="key" tabIndex="12">+/-</div>
+
+        </div>
+        <div id="op_keyboard">
+            <div id="div" class="key" tabIndex="13">/</div>
+            <div id="rate" class="key" tabIndex="14">%</div>
+            <div id="mul" class="key" tabIndex="15">*</div>
+            <div id="mod" class="key" tabIndex="16">mod</div>
+            <div style="float:left;">
+            <div id="sub" class="key" tabIndex="17" style="clear:left;">-</div>
+            <div id="add" class="key" tabIndex="18" style="clear:left;">+</div>
+            </div>
+            <div id="enter" class="key" tabIndex="24">=</div>
+        </div>
+        </div>
+        
+    </div>  
+
+</wicket:panel>
+</body>
+</html>
