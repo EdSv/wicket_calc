@@ -55,6 +55,12 @@ time, mark, audio, video {
     /*display: inline-block;*/
     pointer-events:all;
 }
+.key {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
 .key:hover {
 	font-weight:bold;
 	//color:lightgreen;

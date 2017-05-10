@@ -4,19 +4,24 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.EnumMap;
+import java.util.Formatter.BigDecimalLayoutForm;
 import java.util.function.Function;
+
+import org.eclipse.jetty.util.StringUtil;
 //2017, EdSv.
 public class CalcState implements Serializable {
 
 	private StringBuilder operand1 = new StringBuilder();
 	private StringBuilder operand2 = new StringBuilder();
-	private int numberCounter = 0;
+	//private int numberCounter = 0;
 	private Function<String, String> currentF;
 	private boolean pointFlag = false;
 	private boolean signFlag = false;
 	public boolean inputOverflow = false;
 	private String result ="0";
+	public int resultSize = 12;
 	private String hint = "!!!";
 	
 	public String getResult() {
@@ -57,10 +62,10 @@ public class CalcState implements Serializable {
 	}
 	public void setOperand2(String operand2) {
 		int l = getNumberQnt(this.operand2);
-		if(l < 12) {
+		if(l < resultSize) {
 			this.operand2.append(operand2);
 			this.inputOverflow = false;
-		}else if (l >= 13) {
+		}else if (l >= resultSize + 1) {
 			this.inputOverflow = true;
 		}
 	}
@@ -118,7 +123,7 @@ public class CalcState implements Serializable {
 		else
 			signFlag = false;
 	}
-	// calc operations + - * / mod 1/x sqrt %
+	// calc operations + - * / mod 1/x sqrt % rate
 	public String add(String a) {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
@@ -150,9 +155,12 @@ public class CalcState implements Serializable {
 		 BigDecimal bd1, bd2;
 	     bd1 = new BigDecimal(getOperand1());
 		 bd2 = new BigDecimal(getOperand2());
-	      MathContext mc = new MathContext(2, RoundingMode.HALF_EVEN);
-	      BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL32).round(mc);
-	      result = res.toString();
+		 BigDecimal res = bd1.divide(bd2, 10, RoundingMode.HALF_UP);
+		 res = res.stripTrailingZeros();
+	     // MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
+	      //BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL32).round(mc);
+	      //MathContext mc = new MathContext(2, RoundingMode.HALF_DOWN);
+	      result = res.toString(); 
 	      setFlags(result);
 		return result;
 	}
@@ -182,7 +190,7 @@ public class CalcState implements Serializable {
 		return result;
 	}
 	
-	public String sqrt (String a) {
+	public String sqrt (String a) throws ArithmeticException {
 		result = "0";
 		return result;
 	}
@@ -196,17 +204,35 @@ public class CalcState implements Serializable {
 		return result;
 	}
 	
+	private String adjustToDisplay (String str, int toSize) {
+		if(str == null || str.length() == 0)
+			return str;
+		
+		BigDecimal bd; 
+		if (str.length() > toSize){
+			bd = new BigDecimal(str, new MathContext(7, RoundingMode.HALF_DOWN));
+			str = bd.toEngineeringString();
+
+			int m = str.length() - toSize;
+			if (m > 0)
+				str = str.replaceFirst("\\d{" + m + "}E", "E");
+		}
+		return str;
+	}
+	
 	/////////insertion
 	public CState handleInput(String in) {
-		//lambda here or in other class or as members??
-		///------------run here
+	///------------run here
 	inputType = parseToEnum(in);
-	return doCalculation(in);
+	doCalculation(in);
+	result = adjustToDisplay(result, resultSize);
+	return currentState;
 	}
 	
 	private CInput inputType;
+	private CInput func;
 	CInput parseToEnum(String in){
-		if (in != null && in.matches("\\d+")){
+		if (in != null && in.matches("\\d")){
 			result = in;
 			inputType = CInput.num;
 			return inputType;
@@ -272,6 +298,7 @@ public class CalcState implements Serializable {
 
 		if(in.equals("power")) {
 			currentF = this::power;
+			func = CInput.power;
 			inputType = CInput.func2op;
 			return inputType;
 		}
@@ -289,39 +316,33 @@ public class CalcState implements Serializable {
 	
 	private CState currentState = CState.AC;
 	EnumMap<CState, EnumMap> stateMap;
+	
 	CState doCalculation(String in) {
 		Function <String, CState> f = (Function<String, CState>)(stateMap.get(currentState).get(inputType));
 		currentState = f.apply(in);
-		//hint = "state: " + currentState +" in= " + inputType + " op1= "+getOperand1()+", op2= "+getOperand2();
-		//hint = "state: " + currentState +" op1: " + getOperand1()+ ", " + in;
 		String operation; 
 		if(inputType == CInput.func2op && currentState == CState.Func)
 			operation = in;
 		operation ="";
-		hint = "op1: " + getOperand1();
+		hint = "op1: " + adjustToDisplay(getOperand1(), resultSize);
 		return currentState;
 	}
 	
-	///Transition from one state to another
-	
-	private CState reset (String a) {
+	///Transitions from one state to another
+		private CState reset (String a) {
 		resetFlags();
 		setOperand1(new StringBuilder());
 		setOperand2(new StringBuilder());
-		currentF = null;//notning 
+		currentF = null;//nothing 
 		result = a.equals("AC")?"0":a;//"0";
 		return CState.AC;//state AC 
 	}
 	
 	private String doNothing (String a) {
-		//that func instead flag of new operation or current
-		//to reduce flag checking around
 		//maybe swap here operand?
 		return result;
 	}
 
-//private Function getCurrentFunc(){ return currentF; }
-	
 ///////////////Lambda
 //----------------------------------------------AC
 /*			
@@ -329,6 +350,8 @@ CState.OP1; CState.AC; CState.Func;CState.OP2;
 */				
 //append op1
 Function<String, CState>  num_op1 = (String a)-> {
+	if(a.equals("0"))
+		return CState.AC;
 	setOperand1(new StringBuilder());//if remove reduce funcs in op1
 	setOperand1(a);
 	result = getOperand1();
@@ -481,7 +504,9 @@ Function<String, CState> num2_op2 = (String a)-> {
 };
 
 //add point to op2
-Function<String, CState> point2_op2 = (String a)-> { 
+Function<String, CState> point2_op2 = (String a)-> {
+	if (func == CInput.power)
+		return CState.OP2;//to prevent not integer power
 	if (pointFlag == false){
 		if(getNumberQnt(getOperandBuilder2()) < 12) {
 			setOperand2(a.toString());
@@ -518,7 +543,6 @@ Function<String, CState> enter2_func = (String a)-> {
 		result = currentF.apply("");
 		}catch(ArithmeticException ex){
 			return reset("ERROR");
-			//return 0;//Maybe should add a state: exception
 		}
 	currentF = this::doNothing;
 	setOperand1(new StringBuilder());
@@ -537,7 +561,7 @@ Function<String, CState> func3_func = (String a)-> {
 	setOperand1(new StringBuilder());
 	setOperand2(new StringBuilder());
 	operand1.append(result);
-	return CState.Func;//state OP1 or F?
+	return CState.Func;
 };
 
 
@@ -560,7 +584,6 @@ public CalcState() {
 	EnumMap<CInput, Function<String, CState> > inputToOP1 = 
 			new EnumMap<CInput, Function<String, CState>>(CInput.class);
 	//num, point, del, AC, sign, enter, func2op(add, sub, mul,div,mod, reverse,power,sqrt, rate)
-	//OP1
 	//num1_op1 point1_op1 del_op1 sign1_op1 enter_op1 func_func ifunc_func
 	inputToOP1.put(CInput.num, num1_op1);
 	inputToOP1.put(CInput.point, point1_op1);
@@ -574,7 +597,6 @@ public CalcState() {
 	EnumMap<CInput, Function<String, CState> > inputToFunc = 
 			new EnumMap<CInput, Function<String, CState>>(CInput.class);
 	//num, point, del, AC, sign, enter, func2op(add, sub, mul,div,mod, reverse,power,sqrt, rate)
-	//Func
 	//num_op2 point_op2 del2_ac sign2_op1 enter_func func2_func
 	inputToFunc.put(CInput.num, num_op2);
 	inputToFunc.put(CInput.point, point_op2);
@@ -585,10 +607,10 @@ public CalcState() {
 	inputToFunc.put(CInput.func2op, func2_func);
 	inputToFunc.put(CInput.func1op, ifunc_func);
 	
+	//OP2
 	EnumMap<CInput, Function<String, CState> > inputToOP2 = 
 			new EnumMap<CInput, Function<String, CState>>(CInput.class);
 	//num, point, del, AC, sign, enter, func2op(add, sub, mul,div,mod, reverse,power,sqrt, rate)
-	//OP2
 	//num2_op2 point2_op2 del_op2 sign_op2	enter2_func	func3_func
 	inputToOP2.put(CInput.num, num2_op2);
 	inputToOP2.put(CInput.point, point2_op2);
@@ -607,12 +629,12 @@ public CalcState() {
 }
 
  enum CState {
-	AC(0),OP1(1),Func(2),OP2(3);
-	CState(int index){this.index = index;}
+	AC(0), OP1(1), Func(2), OP2(3);
+	CState (int index){ this.index = index;}
 	private int index;
 	}
  
 enum CInput {
-	num, point, del, AC, sign, enter, func2op, func1op, add, sub, mul,div,mod, reverse,power,sqrt, rate
+	num, point, del, AC, sign, enter, func2op, func1op, add, sub, mul, div, mod, reverse, power, sqrt, rate
 }
 

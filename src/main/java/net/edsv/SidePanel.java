@@ -12,8 +12,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 public class SidePanel extends Panel {
-	//private Label status;// = new Label("Status");
 	private static int counter = 0;
+	
 	public SidePanel(String id) {
 		super(id);
 		
@@ -33,8 +33,6 @@ public class SidePanel extends Panel {
 			protected void onSubmit() {
 				// TODO Auto-generated method stub
 				super.onSubmit();
-				//IModel<?> ml = getDefaultModel().filter((p) -> p.getName().equals("Jane"));
-				//.filter((m) -> m.getName().equals("status"));
 				status.setDefaultModelObject("OK" + counter++);
 			}
 			
