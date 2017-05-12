@@ -12,11 +12,9 @@ import java.util.function.Function;
 import org.eclipse.jetty.util.StringUtil;
 //2017, EdSv.
 public class CalcState implements Serializable {
-
 	private StringBuilder operand1 = new StringBuilder();
 	private StringBuilder operand2 = new StringBuilder();
-	//private int numberCounter = 0;
-	private Function<String, String> currentF;
+	private Function<Void, String> currentF;
 	private boolean pointFlag = false;
 	private boolean signFlag = false;
 	public boolean inputOverflow = false;
@@ -37,30 +35,30 @@ public class CalcState implements Serializable {
 		this.hint = hint;
 	}
 	
-	public int getNumberQnt(StringBuilder op) {
+	private int getNumberQnt(StringBuilder op) {
 		if(signFlag == true)
 			return op.length() - 1;
 		return op.length();
 	}
 	
-	public String getOperand1() {
+	private String getOperand1() {
 		if(operand1 == null)
 			return null;
 		return operand1.toString();
 	}
-	public void setOperand1(String operand1) {
+	private void setOperand1(String operand1) {
 		int l = getNumberQnt(this.operand1);
-		if(l < 12) {
+		if(l < resultSize) {
 			this.operand1.append(operand1);
 			this.inputOverflow = false;
-		}else if (l >= 13) {
+		}else if (l >= resultSize + 1) {
 			this.inputOverflow = true;
 		}
 	}
-	public String getOperand2() {
+	private String getOperand2() {
 		return operand2.toString();
 	}
-	public void setOperand2(String operand2) {
+	private void setOperand2(String operand2) {
 		int l = getNumberQnt(this.operand2);
 		if(l < resultSize) {
 			this.operand2.append(operand2);
@@ -70,49 +68,41 @@ public class CalcState implements Serializable {
 		}
 	}
 	
-	public void setOperand1(StringBuilder operand1) {
+	private void setOperand1(StringBuilder operand1) {
 		this.operand1 = operand1;
 		this.inputOverflow = false;
 	}
-	public void setOperand2(StringBuilder operand2) {
+	private void setOperand2(StringBuilder operand2) {
 		this.operand2 = operand2;
 		this.inputOverflow = false;
 	}
 	
-	public StringBuilder getOperandBuilder1() {
+	private StringBuilder getOperandBuilder1() {
 		return this.operand1;
 	}
-	public StringBuilder getOperandBuilder2() {
+	private StringBuilder getOperandBuilder2() {
 		return this.operand2;
 	}
 	
-	public Function<String, String> getCurrentF() {
-		return currentF;
-	}
-	public void setCurrentF(Function<String, String> currentF) {
-		this.currentF = currentF;
-	}
-
-	public boolean isPointFlag() {
+	private boolean isPointFlag() {
 		return pointFlag;
 	}
-	public void setPointFlag(boolean pointFlag) {
+	private void setPointFlag(boolean pointFlag) {
 		this.pointFlag = pointFlag;
 	}
-	public boolean isSignFlag() {
+	private boolean isSignFlag() {
 		return signFlag;
 	}
-	public void setSignFlag(boolean signFlag) {
+	private void setSignFlag(boolean signFlag) {
 		this.signFlag = signFlag;
 	}
 	
-	
-	void resetFlags () {
+	private void resetFlags () {
 			pointFlag = false;
 			signFlag = false;
 	}
 	
-	void setFlags (String opOrResult) {
+	private void setFlags (String opOrResult) {
 		if(opOrResult.contains("."))
 			pointFlag = true;
 		else
@@ -124,114 +114,116 @@ public class CalcState implements Serializable {
 			signFlag = false;
 	}
 	// calc operations + - * / mod 1/x sqrt % rate
-	public String add(String a) {
+	private String add(Void a) {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
 		bd2 = new BigDecimal(getOperand2());
-		result = bd1.add(bd2).toPlainString();
+		result = bd1.add(bd2).stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
 	
-	public String sub(String a) {
+	private String sub(Void a) {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
 		bd2 = new BigDecimal(getOperand2());
-		result = bd1.subtract(bd2).toPlainString();
+		result = bd1.subtract(bd2).stripTrailingZeros().toString();
 		setFlags(result);//is it necessary
 		return result;
 	}
 	
-	public String multiply(String a) {
+	private String multiply(Void a) {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
 		bd2 = new BigDecimal(getOperand2());
-		result = bd1.multiply(bd2).toPlainString();
+		MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
+		result = bd1.multiply(bd2, MathContext.DECIMAL32)
+					.round(mc).stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
 	
-	public String divide(String a) throws ArithmeticException {
+	private String divide(Void a) throws ArithmeticException {
 		 BigDecimal bd1, bd2;
 	     bd1 = new BigDecimal(getOperand1());
 		 bd2 = new BigDecimal(getOperand2());
-		 BigDecimal res = bd1.divide(bd2, 10, RoundingMode.HALF_UP);
+		 //BigDecimal res = bd1.divide(bd2, 10, RoundingMode.HALF_UP);
+		 MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
+		 BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL32).round(mc);
 		 res = res.stripTrailingZeros();
-	     // MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
 	      //BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL32).round(mc);
-	      //MathContext mc = new MathContext(2, RoundingMode.HALF_DOWN);
-	      result = res.toString(); 
+	      result = res.toString();
 	      setFlags(result);
 		return result;
 	}
 	
-	public String mod(String a) {
+	private String mod(Void a) {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
 		bd2 = new BigDecimal(getOperand2());
-		result = bd1.remainder(bd2).toPlainString();
+		result = bd1.remainder(bd2).stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
 
-	public String reverse(String a) throws ArithmeticException {
+	private String reverse(Void a) throws ArithmeticException {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal("1");
 		bd2 = new BigDecimal(getOperand1());
-		result = bd1.divide(bd2, 4, RoundingMode.HALF_UP).toPlainString();
+		MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
+		result = bd1.divide(bd2, MathContext.DECIMAL32)
+					.round(mc).stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
-	public String power (String a) {
+	private String power (Void a) {
 		BigDecimal bd1;
 		bd1 = new BigDecimal(getOperand1());
-		result = bd1.pow(Integer.parseInt(getOperand2())).toPlainString();
+		result = bd1.pow(Integer.parseInt(getOperand2())).toString();
 		setFlags(result);
 		return result;
 	}
 	
-	public String sqrt (String a) throws ArithmeticException {
-		result = "0";
-		return result;
+	private String sqrt (Void a) throws ArithmeticException {
+		BigDecimal bd1;
+		bd1 = new BigDecimal(getOperand1());
+		double res= Math.sqrt(bd1.doubleValue());
+		if(Double.isNaN(res) || Double.isInfinite(res))
+			throw new ArithmeticException();
+		else{
+		result = new BigDecimal(res).toString();
+		return result;}
 	}
 	
-	public String rate (String a) {
+	private String rate (Void a) {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
 		bd2 = new BigDecimal(getOperand2());
-		result = bd2.divide(new BigDecimal("100"), 4, RoundingMode.HALF_UP).multiply(bd1).toPlainString();
+		result = bd2.divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP)
+				.multiply(bd1).stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
 	
-	private String adjustToDisplay (String str, int toSize) {
-		if(str == null || str.length() == 0)
-			return str;
-		
-		BigDecimal bd; 
-		if (str.length() > toSize){
-			bd = new BigDecimal(str, new MathContext(7, RoundingMode.HALF_DOWN));
-			str = bd.toEngineeringString();
-
-			int m = str.length() - toSize;
-			if (m > 0)
-				str = str.replaceFirst("\\d{" + m + "}E", "E");
-		}
-		return str;
+	private String doNothing (Void a) {
+		//maybe swap here operand?
+		return result;
 	}
 	
-	/////////insertion
-	public CState handleInput(String in) {
+	
 	///------------run here
-	inputType = parseToEnum(in);
-	doCalculation(in);
-	result = adjustToDisplay(result, resultSize);
-	return currentState;
+	public CState handleInput(String in) {
+		inputType = parseToEnum(in);
+		doCalculation(in);
+		result = adjustToDisplay(result, resultSize);
+		return currentState;
 	}
 	
 	private CInput inputType;
 	private CInput func;
-	CInput parseToEnum(String in){
+	private Function <Void, String> funcCandidate;
+	
+	private CInput parseToEnum(String in){
 		if (in != null && in.matches("\\d")){
 			result = in;
 			inputType = CInput.num;
@@ -262,60 +254,60 @@ public class CalcState implements Serializable {
 		}
 		//-----
 		if(in.equals("add")) {
-			currentF = this::add;
+			funcCandidate = this::add;
 			inputType = CInput.func2op;
 			return inputType;
 		}
 		
 		if(in.equals("sub")) {
-			currentF = this::sub;
+			funcCandidate = this::sub;
 			inputType = CInput.func2op;
 			return inputType;
 		}
 		
 		if(in.equals("mul")) {
-			currentF = this::multiply;
+			funcCandidate = this::multiply;
 			inputType = CInput.func2op;
 			return inputType;
 		}
 		if(in.equals("div")) {
-			currentF = this::divide;
+			funcCandidate = this::divide;
 			inputType = CInput.func2op;
 			return inputType;
 		}
 
 		if(in.equals("mod")) {
-			currentF = this::mod;
+			funcCandidate = this::mod;
 			inputType = CInput.func2op;
 			return inputType;
 		}
 		
 		if(in.equals("reverse")) {
-			currentF = this::reverse;
+			funcCandidate = this::reverse;
 			inputType = CInput.func1op;
 			return inputType;
 		}
 
 		if(in.equals("power")) {
-			currentF = this::power;
+			funcCandidate = this::power;
 			func = CInput.power;
 			inputType = CInput.func2op;
 			return inputType;
 		}
 		if(in.equals("sqrt")) {
-			currentF = this::sqrt;
+			funcCandidate = this::sqrt;
 			inputType = CInput.func1op;
 			return inputType;
 		}
 		if(in.equals("rate")) {
-			currentF = this::rate;
+			funcCandidate = this::rate;
 			inputType = CInput.func2op;
 		}
 		return inputType;
 	}
 	
 	private CState currentState = CState.AC;
-	EnumMap<CState, EnumMap> stateMap;
+	private EnumMap<CState, EnumMap> stateMap;
 	
 	CState doCalculation(String in) {
 		Function <String, CState> f = (Function<String, CState>)(stateMap.get(currentState).get(inputType));
@@ -328,21 +320,43 @@ public class CalcState implements Serializable {
 		return currentState;
 	}
 	
+	private String adjustToDisplay (String str, int toSize) {
+		if (str == null || str.length() == 0)
+			return str;
+		if (str.equals("ERROR"))
+			return str;
+		
+		toSize += signFlag ? 1 : 0;
+		BigDecimal bd = new BigDecimal(str);
+		if (bd.toPlainString().length() <= toSize)
+			return bd.toPlainString();
+		if (str.length() > toSize) {
+			bd = new BigDecimal(str, new MathContext(10, RoundingMode.HALF_UP));
+			str = bd.toEngineeringString();
+				int m = str.length() - toSize;
+				if (m > 0) {
+					if (str.contains("E")){
+					str = str.replaceFirst("\\d{" + m + "}E", "E");
+				} else {
+					bd = bd.setScale(10);
+					str = bd.toEngineeringString();
+				}
+			}
+		}
+		return str;
+	}
+	
 	///Transitions from one state to another
 		private CState reset (String a) {
 		resetFlags();
 		setOperand1(new StringBuilder());
 		setOperand2(new StringBuilder());
 		currentF = null;//nothing 
-		result = a.equals("AC")?"0":a;//"0";
+		result = a.equals("AC") ? "0" : a;//"0";
 		return CState.AC;//state AC 
 	}
 	
-	private String doNothing (String a) {
-		//maybe swap here operand?
-		return result;
-	}
-
+	
 ///////////////Lambda
 //----------------------------------------------AC
 /*			
@@ -392,7 +406,7 @@ Function<String, CState> num1_op1 = (String a)-> {
 };
 //add point to op1
 Function<String, CState> point1_op1 = (String a)-> { 
-	if (pointFlag == false){
+	if (pointFlag == false) {
 	setOperand1(a.toString());
 	pointFlag = true;
 	}
@@ -403,9 +417,9 @@ Function<String, CState> point1_op1 = (String a)-> {
 Function<String, CState> del_op1 = (String a)-> { 
 	int l = getOperandBuilder1().length();
 	if (l != 0)
-	getOperandBuilder1().setLength(l-1);
+		getOperandBuilder1().setLength(l-1);
 	if(getOperandBuilder1().length() == 0)
-	setOperand1("0");
+		setOperand1("0");
 	
 	result = getOperand1();
 	setFlags(result);
@@ -414,24 +428,28 @@ Function<String, CState> del_op1 = (String a)-> {
 
 //add sign in OP1
 Function<String, CState> sign1_op1 = (String a)-> {
-	if(signFlag == false){
-	getOperandBuilder1().insert(0, "-");
-	signFlag = true;
-	}else {
-	getOperandBuilder1().delete(0, 1);
-	signFlag = false;
+	if (signFlag == false) {
+		getOperandBuilder1().insert(0, "-");
+		signFlag = true;
+	} else {
+		getOperandBuilder1().delete(0, 1);
+		signFlag = false;
 	}
 	result = getOperand1();
 	return CState.OP1;
 };
 //enter
-Function<String, CState> enter_op1 = (String a)-> { return CState.OP1;	};
+Function<String, CState> enter_op1 = (String a)-> { 
+	result = new BigDecimal(result).stripTrailingZeros().toPlainString();
+	setFlags(result);
+	return CState.OP1;//CState.AC;
+	};
 //add
 Function<String, CState> func_func = (String a)-> {
 	result = "";
 	signFlag = false;
 	pointFlag = false;
-	//currentF = getCurrentFunc( );
+	currentF = funcCandidate;
 	return CState.Func;
 };
 
@@ -440,10 +458,11 @@ Function<String, CState> ifunc_func = (String a)-> {
 	result = "";
 	signFlag = false;
 	pointFlag = false;
-try{
-	result = currentF.apply("0");
-	}catch(ArithmeticException ex){
-		result = "ERROR";
+	currentF = funcCandidate;
+try {
+	result = currentF.apply(null);//0
+	} catch(ArithmeticException ex){
+		reset("ERROR");
 		return CState.AC;
 		}
 	setOperand1(new StringBuilder());
@@ -491,7 +510,10 @@ Function<String, CState> enter_func = (String a)-> {
 return CState.Func;
 };
 //func
-Function<String, CState> func2_func = (String a)-> CState.Func;					
+Function<String, CState> func2_func = (String a)-> {
+	currentF = funcCandidate;
+	return CState.Func;					
+};
 		
 
 //---------------------------------------------OP2
@@ -508,7 +530,7 @@ Function<String, CState> point2_op2 = (String a)-> {
 	if (func == CInput.power)
 		return CState.OP2;//to prevent not integer power
 	if (pointFlag == false){
-		if(getNumberQnt(getOperandBuilder2()) < 12) {
+		if(getNumberQnt(getOperandBuilder2()) < resultSize) {
 			setOperand2(a.toString());
 			pointFlag = true;
 		}
@@ -527,10 +549,10 @@ Function<String, CState> del_op2 = (String a)-> {
 					
 //add sign in OP2
 Function<String, CState> sign_op2 = (String a)-> {
-	if(signFlag == false){
+	if (signFlag == false) {
 		getOperandBuilder2().insert(0, "-");
 		signFlag = true;
-	}else {
+	} else {
 		getOperandBuilder2().delete(0, 1);
 		signFlag = false;
 	}
@@ -539,9 +561,9 @@ Function<String, CState> sign_op2 = (String a)-> {
 };
 //enter
 Function<String, CState> enter2_func = (String a)-> {
-	try{
-		result = currentF.apply("");
-		}catch(ArithmeticException ex){
+	try {
+		result = currentF.apply(null);//""
+		} catch (ArithmeticException ex){
 			return reset("ERROR");
 		}
 	currentF = this::doNothing;
@@ -553,14 +575,16 @@ Function<String, CState> enter2_func = (String a)-> {
 };
 //func
 Function<String, CState> func3_func = (String a)-> { 
-	try{
-		result = currentF.apply("");
-	}catch(ArithmeticException ex) {
+	try {
+		result = currentF.apply(null);//""
+	} catch (ArithmeticException ex) {
 		return reset("ERROR");//will return 0, to switch state;
 	}
+	currentF = funcCandidate;
 	setOperand1(new StringBuilder());
 	setOperand2(new StringBuilder());
 	operand1.append(result);
+	resetFlags();
 	return CState.Func;
 };
 
