@@ -8,8 +8,6 @@ public class CalcPage extends WebPage{
 
 	public CalcPage(PageParameters pp) {
 		super(pp);
-	
-		add (new Label("welcome", "You in the calc now!"));
 		add( new CalcPanel("calc"));
 	}
 

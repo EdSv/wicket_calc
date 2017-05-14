@@ -23,7 +23,7 @@ public class CalcState implements Serializable {
 	private String hint = "!!!";
 	
 	public String getResult() {
-		return result;
+		return adjustToDisplay(result, resultSize);
 	}
 	public void setResult(String result) {
 		this.result = result;
@@ -34,13 +34,11 @@ public class CalcState implements Serializable {
 	public void setHint(String hint) {
 		this.hint = hint;
 	}
-	
 	private int getNumberQnt(StringBuilder op) {
 		if(signFlag == true)
 			return op.length() - 1;
 		return op.length();
 	}
-	
 	private String getOperand1() {
 		if(operand1 == null)
 			return null;
@@ -67,7 +65,6 @@ public class CalcState implements Serializable {
 			this.inputOverflow = true;
 		}
 	}
-	
 	private void setOperand1(StringBuilder operand1) {
 		this.operand1 = operand1;
 		this.inputOverflow = false;
@@ -76,14 +73,12 @@ public class CalcState implements Serializable {
 		this.operand2 = operand2;
 		this.inputOverflow = false;
 	}
-	
 	private StringBuilder getOperandBuilder1() {
 		return this.operand1;
 	}
 	private StringBuilder getOperandBuilder2() {
 		return this.operand2;
 	}
-	
 	private boolean isPointFlag() {
 		return pointFlag;
 	}
@@ -136,9 +131,9 @@ public class CalcState implements Serializable {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal(getOperand1());
 		bd2 = new BigDecimal(getOperand2());
-		MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
-		result = bd1.multiply(bd2, MathContext.DECIMAL32)
-					.round(mc).stripTrailingZeros().toString();
+		//MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
+		result = bd1.multiply(bd2, MathContext.DECIMAL64)
+					.stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
@@ -147,13 +142,11 @@ public class CalcState implements Serializable {
 		 BigDecimal bd1, bd2;
 	     bd1 = new BigDecimal(getOperand1());
 		 bd2 = new BigDecimal(getOperand2());
-		 //BigDecimal res = bd1.divide(bd2, 10, RoundingMode.HALF_UP);
-		 MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
-		 BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL32).round(mc);
+		 //MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
+		 BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL64);
 		 res = res.stripTrailingZeros();
-	      //BigDecimal res = bd1.divide(bd2, MathContext.DECIMAL32).round(mc);
-	      result = res.toString();
-	      setFlags(result);
+	     result = res.toString();
+	     setFlags(result);
 		return result;
 	}
 	
@@ -170,9 +163,9 @@ public class CalcState implements Serializable {
 		BigDecimal bd1, bd2;
 		bd1 = new BigDecimal("1");
 		bd2 = new BigDecimal(getOperand1());
-		MathContext mc = new MathContext(10, RoundingMode.HALF_UP);
-		result = bd1.divide(bd2, MathContext.DECIMAL32)
-					.round(mc).stripTrailingZeros().toString();
+		MathContext mc = new MathContext(2, RoundingMode.HALF_UP);
+		result = bd1.divide(bd2, MathContext.DECIMAL64)
+					.stripTrailingZeros().toString();
 		setFlags(result);
 		return result;
 	}
@@ -215,7 +208,6 @@ public class CalcState implements Serializable {
 	public CState handleInput(String in) {
 		inputType = parseToEnum(in);
 		doCalculation(in);
-		result = adjustToDisplay(result, resultSize);
 		return currentState;
 	}
 	
@@ -325,21 +317,27 @@ public class CalcState implements Serializable {
 			return str;
 		if (str.equals("ERROR"))
 			return str;
+		if (str.endsWith("."))
+			return str;
 		
-		toSize += signFlag ? 1 : 0;
+		
 		BigDecimal bd = new BigDecimal(str);
-		if (bd.toPlainString().length() <= toSize)
-			return bd.toPlainString();
+		str = bd.toPlainString();
+		toSize += signFlag ? 1 : 0;
+		if (str.length() <= toSize)
+			return str;
+		
+		MathContext mc = new MathContext(10, RoundingMode.HALF_EVEN);
 		if (str.length() > toSize) {
-			bd = new BigDecimal(str, new MathContext(10, RoundingMode.HALF_UP));
-			str = bd.toEngineeringString();
+			bd = new BigDecimal(str, mc);
+			str = bd.stripTrailingZeros().toEngineeringString();
+			
 				int m = str.length() - toSize;
 				if (m > 0) {
 					if (str.contains("E")){
 					str = str.replaceFirst("\\d{" + m + "}E", "E");
 				} else {
-					bd = bd.setScale(10);
-					str = bd.toEngineeringString();
+					return str;
 				}
 			}
 		}
@@ -374,7 +372,7 @@ Function<String, CState>  num_op1 = (String a)-> {
 
 //add point to op1
 Function<String, CState> point_op1 = (String a)-> { 
-	setOperand1("0" + a.toString());
+	setOperand1("0" + a);
 	pointFlag = true;
 	result = getOperand1();
 	return CState.OP1;
@@ -407,7 +405,7 @@ Function<String, CState> num1_op1 = (String a)-> {
 //add point to op1
 Function<String, CState> point1_op1 = (String a)-> { 
 	if (pointFlag == false) {
-	setOperand1(a.toString());
+	setOperand1(a);
 	pointFlag = true;
 	}
 	result = getOperand1();
@@ -455,9 +453,9 @@ Function<String, CState> func_func = (String a)-> {
 
 //one operand func
 Function<String, CState> ifunc_func = (String a)-> {
-	result = "";
-	signFlag = false;
-	pointFlag = false;
+	//result = "";
+	//signFlag = false;
+	//pointFlag = false;
 	currentF = funcCandidate;
 try {
 	result = currentF.apply(null);//0
@@ -468,7 +466,7 @@ try {
 	setOperand1(new StringBuilder());
 	setOperand2(new StringBuilder());
 	operand1.append(result);
-	setFlags(result);
+	resetFlags();
 	return CState.Func;
 };						
 
@@ -482,7 +480,7 @@ Function<String, CState> num_op2 = (String a)-> {
 };							
 //add point to op2
 Function<String, CState> point_op2 = (String a)-> {
-	setOperand2("0" + a.toString());
+	setOperand2("0" + a);
 	pointFlag = true;
 	result = getOperand2();
 	return CState.OP2;
@@ -531,7 +529,7 @@ Function<String, CState> point2_op2 = (String a)-> {
 		return CState.OP2;//to prevent not integer power
 	if (pointFlag == false){
 		if(getNumberQnt(getOperandBuilder2()) < resultSize) {
-			setOperand2(a.toString());
+			setOperand2(a);
 			pointFlag = true;
 		}
 	}

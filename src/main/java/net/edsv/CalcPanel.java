@@ -47,7 +47,6 @@ public class CalcPanel extends Panel {
 				String elem_id = target.getLastFocusedElementId();
 				CalcState m = (CalcState) getDefaultModelObject();
 				m.handleInput(elem_id);
-				String r = m.getResult();
 				String allowa = String.valueOf(m.inputOverflow);
 				display.add(AttributeModifier.replace("data-counter", allowa));
 				target.add(display);
